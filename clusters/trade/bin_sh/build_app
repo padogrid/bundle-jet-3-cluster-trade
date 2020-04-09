@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+SCRIPT_DIR="$(cd -P -- "$(dirname -- "$0")" && pwd -P)"
+BASE_DIR="$(dirname "$SCRIPT_DIR")"
+
+EXECUTABLE="`basename $0`"
+
+if [ "$HELP" == "true" ]; then
+   echo "Usage:"
+   echo "   ./$EXECUTABLE [-clean] [-?]"
+   echo ""
+   echo "   Builds the realtime-trade-monitor project by first downloading it from"
+   echo "   the GitHub repo. This command required 'git' and 'mvn' in you path."
+   echo ""
+   echo "Default: ./$EXECUTABLE"
+   echo ""
+   exit
+fi
+
+pushd $BASE_DIR > /dev/null
+git clone https://github.com/cangencer/realtime-trade-monitor.git
+popd > /dev/null
+pushd $BASE_DIR/realtime-trade-monitor > /dev/null
+mvn package
+popd > /dev/null
+
+cp $BASE_DIR/realtime-trade-monitor/jet-server/target/jet-server-1.0-SNAPSHOT.jar $BASE_DIR/lib/
+
+#
+# Display build information
+#
+echo ""
+echo "Workspace: $HAZELCAST_ADDON_WORKSPACE"
+echo "  Cluster: $CLUSTER"
+echo ""
+echo "The built jar file(s) are placed in the following directory:"
+echo ""
+echo "   $BASE_DIR/lib"
+echo ""
+echo "CLASSPATH includes the above directory for this cluster only."
+echo ""
