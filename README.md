@@ -27,10 +27,14 @@ export PATH=$PATH:$KAFKA_HOME/bin
 
 ## Installing and Building the `trade` Bundle
 
-To build it, run the `build_app` script from inside the `bin_sh` directory as follows:
+To build it, run the `build_app` script in the `trade` cluster's `bin_sh` directory as follows:
 
 ```console
+# Switch to the trade cluster
+switch_cluster trade
 cd bin_sh
+
+# Build app
 ./build_app
 ```
 
@@ -43,8 +47,7 @@ Make sure to add at least one member before starting the cluster.
 switch_cluster trade
 
 # Add 2 members
-add_member
-add_member
+add_member; add_member
 
 # Start cluster
 start_cluster
@@ -52,15 +55,14 @@ start_cluster
 
 ## Running apps
 
-The `build_app` clones the repo in the cluster directory. For instructions, please see README.md in the cloned project directory as follows.
+The `build_app` script clones the `realtime-trade-monitor` repo in the cluster directory.
 
 ```console
 switch_cluster trade
 cd realtime-trade-monitor
-cat README.md
 ```
 
-The following shows the order in which the commands described in the above `realtime-trade-monitor/README.md` file should be executed.
+The following lists the commands described in the `realtime-trade-monitor` repo in the order they should be executed.
 
 ```console
 # 1. Start Zookeeper and Kafka
