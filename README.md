@@ -50,7 +50,7 @@ add_member; add_member
 start_cluster
 ```
 
-## Running apps
+## Running Apps
 
 The `build_app` script clones the `realtime-trade-monitor` repo in the cluster directory.
 
@@ -86,6 +86,16 @@ java -jar webapp/target/webapp-1.0-SNAPSHOT.jar
 ```
 
 **Trade Blotter URL:** [http://localhost:9000](http://localhost:9000)
+
+## Tearing Down
+
+```console
+# 1. Ctrl-C servers running in the foreground:
+#    Javalin web server (7),  trade-producter (6), Kafka server (1), Zookeeper (1)
+
+# 2. Stop Jet cluster
+stop_cluster
+```
 
 ## Tips
 
