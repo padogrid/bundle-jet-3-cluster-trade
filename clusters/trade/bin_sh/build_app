@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 SCRIPT_DIR="$(cd -P -- "$(dirname -- "$0")" && pwd -P)"
-BASE_DIR="$(dirname "$SCRIPT_DIR")"
+. $SCRIPT_DIR/.addonenv.sh
 
 EXECUTABLE="`basename $0`"
 
@@ -16,14 +16,38 @@ if [ "$HELP" == "true" ]; then
    exit
 fi
 
-pushd $BASE_DIR > /dev/null
+if [[ ${OS_NAME} == DARWIN* ]]; then
+   # Mac - space required
+   __SED_BACKUP=" 0"
+else
+   __SED_BACKUP="0"
+fi
+
+pushd $APP_DIR > /dev/null
 git clone https://github.com/cangencer/realtime-trade-monitor.git
 popd > /dev/null
-pushd $BASE_DIR/realtime-trade-monitor > /dev/null
+pushd $APP_DIR/realtime-trade-monitor > /dev/null
+sed -i${__SED_BACKUP} 's/<jet.version>.*<\/jet.version>/<jet.version>'$HAZELCAST_VERSION'<\/jet.version>/' pom.xml
 mvn package
 popd > /dev/null
 
-cp $BASE_DIR/realtime-trade-monitor/jet-server/target/jet-server-1.0-SNAPSHOT.jar $BASE_DIR/lib/
+if [ ! -d "$APP_DIR/lib" ]; then
+   mkdir -p "$APP_DIR/lib"
+fi
+if [ ! -d "$APP_DIR/plugins" ]; then
+   mkdir -p "$APP_DIR/plugins"
+fi
+cp $APP_DIR/realtime-trade-monitor/jet-server/target/jet-server-1.0-SNAPSHOT.jar $APP_DIR/lib/
+
+# Copy the Jet jar into the plugins directory to prevent jar version conflict
+# which may occur if the uber jar from the build contains an older version of Jet.
+# JET_HOME/lib is the last in the class path and the cluster plugins is the first.
+echo cp $JET_HOME/lib/hazelcast-jet-${HAZELCAST_VERSION}.jar $APP_DIR/plugins/
+if [ "$IS_HAZELCAST_ENTERPRISE" == "true" ]; then
+   cp $JET_HOME/lib/hazelcast-jet-enterprise-${HAZELCAST_VERSION}.jar $APP_DIR/plugins/
+else
+   cp $JET_HOME/lib/hazelcast-jet-${HAZELCAST_VERSION}.jar $APP_DIR/plugins/
+fi
 
 #
 # Display build information
@@ -34,7 +58,7 @@ echo "  Cluster: $CLUSTER"
 echo ""
 echo "The built jar file(s) are placed in the following directory:"
 echo ""
-echo "   $BASE_DIR/lib"
+echo "   $APP_DIR/lib"
 echo ""
 echo "CLASSPATH includes the above directory for this cluster only."
 echo ""
