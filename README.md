@@ -88,7 +88,7 @@ java -jar trade-producer/target/trade-producer-1.0-SNAPSHOT.jar localhost:9092 1
 java -jar webapp/target/webapp-1.0-SNAPSHOT.jar
 ```
 
-Trade Blotter URL: [http://localhost:9000](http://localhost:9000)
+**Trade Blotter URL:** [http://localhost:9000](http://localhost:9000)
 
 ## Tips
 
