@@ -43,9 +43,6 @@ cd bin_sh
 Make sure to add at least one member before starting the cluster.
 
 ```console
-# Switch to the trade cluster
-switch_cluster trade
-
 # Add 2 members
 add_member; add_member
 
