@@ -29,7 +29,7 @@ cp $BASE_DIR/realtime-trade-monitor/jet-server/target/jet-server-1.0-SNAPSHOT.ja
 # Display build information
 #
 echo ""
-echo "Workspace: $HAZELCAST_ADDON_WORKSPACE"
+echo "Workspace: $PADOGRID_WORKSPACE"
 echo "  Cluster: $CLUSTER"
 echo ""
 echo "The built jar file(s) are placed in the following directory:"
