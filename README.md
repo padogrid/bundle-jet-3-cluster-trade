@@ -7,7 +7,7 @@ The `trade` cluster bundle installs a Jet cluster that includes the `build_app` 
 ## Installing Bundle
 
 ```console
-install_bundle -download jet-3-cluster-trade
+install_bundle -download bundle-jet-3-cluster-trade
 ```
 
 ## Use Case

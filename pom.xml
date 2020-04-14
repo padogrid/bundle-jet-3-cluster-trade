@@ -6,9 +6,9 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>padogrid.addon</groupId>
-	<artifactId>jet-3-cluster-trade</artifactId>
+	<artifactId>bundle-jet-3-cluster-trade</artifactId>
 	<packaging>pom</packaging>
-	<name>jet-3-cluster-trade</name>
+        <name>${project.artifactId}</name>
 	<version>1.0.0</version>
 	<description>Trade monitor demo bundle</description>
 
