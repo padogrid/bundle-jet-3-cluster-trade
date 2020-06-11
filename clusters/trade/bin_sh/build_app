@@ -9,7 +9,7 @@ if [ "$HELP" == "true" ]; then
    echo "   ./$EXECUTABLE [-clean] [-?]"
    echo ""
    echo "   Builds the realtime-trade-monitor project by first downloading it from"
-   echo "   the GitHub repo. This command required 'git' and 'mvn' in you path."
+   echo "   the GitHub repo. This command requires 'git' and 'mvn' in you path."
    echo ""
    echo "Default: ./$EXECUTABLE"
    echo ""
