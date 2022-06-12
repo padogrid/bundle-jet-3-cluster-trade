@@ -6,6 +6,8 @@ The `trade` cluster bundle installs a Jet cluster that includes the `build_app` 
 
 ## Installing Bundle
 
+![PadoGrid](https://github.com/padogrid/padogrid/raw/develop/images/padogrid-3d-16x16.png) [*Driven by PadoGrid*](https://github.com/padogrid)
+
 ```console
 install_bundle -download bundle-jet-3-cluster-trade
 ```
