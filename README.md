@@ -7,7 +7,7 @@
 
 # Jet Cluster: trade
   
-‼️  **Deprecated.** As of PadoGrid v1.0.0, Jet 3.x and Jet 4.x are no longer supported. To bundle runs only on PadoGrid v0.9.x. The `trade` cluster bundle installs a Jet cluster that includes the `build_app` script to clone and build the `realtime-trade-monitor` project maintained at the GitHub URL shown below.
+‼️  **Deprecated.** *As of PadoGrid v1.0.0, Jet 3.x and Jet 4.x are no longer supported. This bundle runs only on PadoGrid v0.9.x.* The `trade` cluster bundle installs a Jet cluster that includes the `build_app` script to clone and build the `realtime-trade-monitor` project maintained at the GitHub URL shown below.
 
 [https://github.com/cangencer/realtime-trade-monitor.git](https://github.com/cangencer/realtime-trade-monitor.git)
 
